@@ -1,0 +1,6 @@
+#获取从符号服务器获取pdb文件到本地，
+
+./symchk.exe /r c:\windows\sysWOW64 /s SRV*d:\symbols64\*http://msdl.microsoft.com/download/symbols
+
+ls *.dll |% {"./symchk.exe c:\windows\system32\{0} /s SRV*d:\symbols32\*http://msdl.microsoft.com/download/symbols" -f $_.name} > f:\32dll.bat
+ls *.dll |% {"./symchk.exe c:\windows\syswow64\{0} /s SRV*d:\symbols64\*http://msdl.microsoft.com/download/symbols" -f $_.name} > f:\64dll.bat
